@@ -1,0 +1,155 @@
+  <!--
+Este código implementa un juego educativo interactivo para niños, con tres actividades principales: llenado de un vaso hasta un nivel específico, ajuste de la longitud de un objeto y estimación de cantidades de frutas. La estructura se organiza en HTML con secciones de juego, controles de usuario, panel de puntuación y retroalimentación. Se incluyen también modales para mostrar resultados finales, desbloqueo de personajes y visualización de la colección de personajes.  
+
+1. Estructura general:
+   - El HTML contiene un contenedor principal `.stage` que engloba el header, el área de juego (`main#gameArea`) y un aside con panel de puntuación y botones de ayuda.
+   - Cada actividad se encuentra en una `<section>` separada (`capSection`, `longSection`, `estSection`) y se muestra/oculta dinámicamente según el avance del juego.
+   - La sección de resultados (`resultSection`) se muestra al finalizar las actividades, mostrando puntuación, estrellas y un botón para reiniciar.
+   - Existen modales (`modalResult`, `modalCharacter`, `modalCollection`) que se muestran en eventos especiales como completar el juego o desbloquear un personaje.
+
+2. Funcionalidades principales del juego:
+   - **Llenado de vaso:** El usuario aumenta o disminuye el nivel de líquido mediante botones y confirma cuando cree que ha alcanzado el nivel objetivo. La interfaz incluye una representación visual del vaso y del líquido.
+   - **Ajuste de longitud:** Permite mover un objeto horizontalmente con botones para igualar la longitud al valor objetivo. Se muestra visualmente con una regla y un indicador de longitud.
+   - **Estimación de frutas:** Presenta varias opciones de canastas con frutas y el usuario debe seleccionar la que coincide con la cantidad objetivo.
+   - Cada actividad tiene un sistema de validación que calcula si la acción del usuario coincide con el objetivo y actualiza la puntuación.
+
+3. Interacción y retroalimentación:
+   - La puntuación se muestra en tiempo real en el panel lateral.
+   - El texto de `feedback` da indicaciones y refuerza la interacción positiva.
+   - Botones de repetición y ayuda permiten que el niño escuche de nuevo las instrucciones o reciba asistencia.
+
+4. Modales:
+   - `modalResult` muestra al final del juego la puntuación y estrellas obtenidas, con opción de avanzar a la siguiente actividad o juego.
+   - `modalCharacter` se activa cuando se desbloquea un personaje, mostrando su nombre, imagen y descripción.
+   - `modalCollection` permite al usuario revisar todos los personajes desbloqueados hasta el momento.
+
+5. Integración con JavaScript:
+   - El archivo `1_tema_visual_2_grado.js` gestiona la lógica del juego, incluyendo:
+       - Control de eventos de botones (`Nuevo juego`, `Confirmar`, `Repetir`, movimiento de objetos, etc.).
+       - Mostrar/ocultar secciones y modales según el progreso.
+       - Validación de las respuestas del jugador y actualización de la puntuación.
+       - Animaciones visuales de los elementos (llenado del vaso, movimiento del objeto, resaltado de opciones).
+       - Registro y manejo de personajes desbloqueados y colección del usuario.
+
+En resumen, este código crea un entorno de aprendizaje lúdico y visualmente interactivo, donde cada actividad está cuidadosamente diseñada para enseñar conceptos de medición, estimación y coordinación, con retroalimentación inmediata y elementos motivacionales como recompensas y personajes desbloqueables.
+-->
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Juego Infantil Animado</title>
+<link rel="stylesheet" href="1_tema_visual_2_grado.css">
+</head>
+<body>
+<div class="stage" id="stage">
+    <header>
+        <h1>¡Aprendamos jugando!</h1>
+        <button id="nuevo" aria-label="Nuevo juego">Nuevo Juego</button>
+    </header>
+
+    
+
+<div id="startOverlay">
+  <div id="startModal">
+    <h1>🎮 Juego de Medidas y Estimación</h1>
+    <p>Presiona el botón para comenzar.<br>Escucharás las instrucciones por voz.</p>
+    <button id="startBtn">Iniciar Juego</button>
+  </div>
+</div>
+
+
+
+    <main id="gameArea" aria-live="polite">
+        <section id="capSection" class="game-section" aria-hidden="false">
+            <h2>Llena el vaso hasta el nivel pedido</h2>
+            <div class="level-display" id="capTargetDisplay">0%</div>
+            <div class="cup-wrap" aria-hidden="false">
+                <img src="imagenes/vaso_vacio.jpg" alt="Vaso" class="cup-img">
+                <div class="cup-markers" aria-hidden="true"></div>
+                <div id="liquidOverlay" class="liquid-overlay" aria-hidden="true"></div>
+            </div>
+            <div class="controls-buttons">
+                <button id="capMinus" aria-label="Disminuir">➖</button>
+                <span id="capVal" aria-live="polite">0%</span>
+                <button id="capPlus" aria-label="Aumentar">➕</button>
+                <button id="capConfirm" aria-label="Confirmar">✓</button>
+            </div>
+        </section>
+
+        <section id="longSection" class="game-section" style="display:none" aria-hidden="true">
+            <h2>Ajusta la longitud del objeto</h2>
+            <div class="level-display" id="longTargetDisplay">0</div>
+            <div class="ruler-wrap" aria-hidden="false">
+                <div class="ruler-fill" id="rulerFill" aria-hidden="true"></div>
+                <div id="ticks" aria-hidden="true"></div>
+                <img id="longObj" src="imagenes/mx.jpg" alt="Objeto" class="long-object" />
+            </div>
+            <div class="controls-buttons">
+                <button id="leftBtn" aria-label="Mover izquierda">◀</button>
+                <button id="rightBtn" aria-label="Mover derecha">▶</button>
+                <button id="longConfirm" aria-label="Confirmar">✓</button>
+            </div>
+        </section>
+
+        <section id="estSection" class="game-section" style="display:none" aria-hidden="true">
+            <h2>¿Cuál canasta tiene exactamente <span id="estTarget">5</span> frutas?</h2>
+            <div id="estChoices" class="est-choices" role="list"></div>
+        </section>
+
+        <section id="resultSection" class="game-section" style="display:none" aria-hidden="true">
+            <h2>Juego completado</h2>
+            <p id="resultText"></p>
+            <div id="stars" class="stars" aria-hidden="true"></div>
+            <button id="restart" aria-label="Jugar de nuevo">Jugar de nuevo</button>
+        </section>
+    </main>
+
+    <aside>
+        <div class="score-panel">Puntuación: <span id="score">0</span></div>
+        <div id="feedback" aria-live="polite">Sigue las instrucciones y usa los botones grandes.</div>
+        <div class="bottom-buttons">
+            <button id="repeat">Repetir</button>
+            <button id="help">Ayuda</button>
+        </div>
+    </aside>
+</div>
+
+<div id="modalResult" class="modal" style="display:none" aria-hidden="true" role="dialog" aria-labelledby="modalResultTitle">
+  <div class="modal-content">
+    <h2 id="modalResultTitle">¡Juego completado!</h2>
+    <p id="modalScore"></p>
+    <div id="modalStars" class="stars" aria-hidden="true"></div>
+    <div style="margin-top:12px;">
+      <button id="modalNext">Siguiente</button>
+    </div>
+  </div>
+</div>
+
+<div id="modalCharacter" class="modal" style="display:none" aria-hidden="true" role="dialog" aria-labelledby="modalCharTitle">
+  <div class="modal-content">
+    <h2 id="modalCharTitle">¡Felicidades!</h2>
+    <p id="charName" class="char-name"></p>
+    <img id="charImage" src="" alt="Personaje" class="char-image">
+    <p id="charDesc" class="char-desc"></p>
+    <div class="modal-buttons">
+      <button id="finishBtn">Finalizar</button>
+      <button id="viewCollectionBtn">Ver colección</button>
+    </div>
+  </div>
+</div>
+
+<div id="modalCollection" class="modal" style="display:none" aria-hidden="true" role="dialog" aria-labelledby="modalColTitle">
+  <div class="modal-content">
+    <h2 id="modalColTitle">Mis personajes desbloqueados</h2>
+    <div id="collectionList" class="collection-list" aria-live="polite"></div>
+    <div style="margin-top:12px;">
+      <button id="closeCollectionBtn">Cerrar</button>
+    </div>
+  </div>
+</div>
+
+<script src="1_tema_visual_2_grado.js"></script>
+</body>
+</html>

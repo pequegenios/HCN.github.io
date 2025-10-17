@@ -1,0 +1,94 @@
+ <!-- Este HTML estructura una interfaz de gestión de estudiantes con un sidebar de navegación,
+   un área principal para buscar y mostrar estudiantes en una tabla, y un modal para ver
+    o editar información de un estudiante. Incluye iconos mediante Font Awesome y carga 
+    un archivo JS para la funcionalidad dinámica. -->
+  
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Consulta de Estudiantes</title>
+  <link rel="stylesheet" href="consulta.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+</head>
+<body>
+ 
+  <aside class="sidebar">
+    <nav class="menu">
+      <a href="inicio2.html" class="menu-item">
+        <div class="menu-icon-container"><i class="fa-solid fa-house"></i></div>
+        <div class="menu-text">Inicio</div>
+      </a>
+      
+      <a href="registro.html" class="menu-item">
+        <div class="menu-icon-container"><i class="fa-solid fa-file-pen"></i></div>
+        <div class="menu-text">Registrar</div>
+      </a>
+      
+      <a href="consulta.html" class="menu-item active">
+        <div class="menu-icon-container"><i class="fa-solid fa-user-graduate"></i></div>
+        <div class="menu-text">Consulta de Estudiantes</div>
+      </a>
+
+      <a href="control.html" class="menu-item">
+        <div class="menu-icon-container"><i class="fa-solid fa-gear"></i></div>
+        <div class="menu-text">Control Plataforma</div>
+      </a>
+
+      <a href="monitoreo.html" class="menu-item">
+        <div class="menu-icon-container"><i class="fa-solid fa-clipboard-list"></i></div>
+        <div class="menu-text">Monitoreo</div>
+      </a>
+
+      <a href="estadisticas.html" class="menu-item">
+        <div class="menu-icon-container"><i class="fa-solid fa-chart-line"></i></div>
+        <div class="menu-text">Estadísticas</div>
+      </a>
+    </nav>
+  </aside>
+
+  <main class="main-content">
+    <header class="topbar">
+      <input type="text" placeholder="Buscar" class="search-bar" />
+      <div class="user-section">
+        <span>ESP</span>
+        <i data-lucide="mail"></i>
+        <i data-lucide="bell"></i>
+        <div class="user">
+          <img src="https://cdn-icons-png.flaticon.com/512/219/219983.png" alt="User">
+          <span>Silvia Herrera</span>
+        </div>
+      </div>
+    </header>
+
+    <section>
+      <h2>Estudiantes Registrados</h2>
+      <table id="tablaEstudiantes">
+        <thead>
+          <tr>
+            <th>Código MINED</th>
+            <th>Nombre Completo</th>
+            <th>Grado</th>
+            <th>Sección</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+        </tbody>
+      </table>
+    </section>
+  </main>
+
+  <div id="modalVerEditar" class="modal">
+    <div class="modal-contenido" id="contenidoVerEditar">
+      <span id="cerrarModalVerEditar" class="cerrar">&times;</span>
+      <div id="modalBody"></div>
+      <div id="modalBotones" style="margin-top:15px;"></div>
+    </div>
+  </div>
+  
+  <script src="consulta.js"></script>
+</body>
+</html>

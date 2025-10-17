@@ -1,0 +1,99 @@
+ <!-- Esta página contiene la estructura principal del panel de control para el seguimiento 
+  de niveles de 1° grado, incluyendo un sidebar con navegación, contenido principal con secciones
+   dinámicas de unidades y temas, un encabezado superior con información del usuario y notificaciones,
+    y un modal interactivo para confirmaciones. -->
+
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Control de Niveles - 1° Grado</title>
+  <link rel="stylesheet" href="control.css" />
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+  />
+</head>
+<body>
+ 
+  <aside class="sidebar">
+    <nav class="menu">
+      <a href="inicio2.html" class="menu-item">
+        <div class="menu-icon-container"><i class="fa-solid fa-house"></i></div>
+        <div class="menu-text">Inicio</div>
+      </a>
+
+      <a href="registro.html" class="menu-item">
+        <div class="menu-icon-container"><i class="fa-solid fa-file-pen"></i></div>
+        <div class="menu-text">Registrar</div>
+      </a>
+      
+      <a href="consulta.html" class="menu-item">
+        <div class="menu-icon-container"><i class="fa-solid fa-user-graduate"></i></div>
+        <div class="menu-text">Consulta de Estudiantes</div>
+      </a>
+
+      <a href="control.html" class="menu-item active">
+        <div class="menu-icon-container"><i class="fa-solid fa-gear"></i></div>
+        <div class="menu-text">Control Plataforma</div>
+      </a>
+
+      <a href="monitoreo.html" class="menu-item">
+        <div class="menu-icon-container"><i class="fa-solid fa-clipboard-list"></i></div>
+        <div class="menu-text">Monitoreo</div>
+      </a>
+
+      <a href="estadisticas.html" class="menu-item">
+        <div class="menu-icon-container"><i class="fa-solid fa-chart-line"></i></div>
+        <div class="menu-text">Estadísticas</div>
+      </a>
+    </nav>
+  </aside>
+
+  <main class="main-content">
+    <header class="top-header">
+      <h1>Pequegenios</h1>
+      <div class="user-info">
+        <i class="fa-solid fa-bell notif"></i>
+        <span class="user-name">Silvia Herrera</span>
+        <img
+          src="https://cdn-icons-png.flaticon.com/512/219/219969.png"
+          alt="user"
+          class="user-avatar"
+        />
+      </div>
+    </header>
+
+    <section class="subtitulo">
+      <h2>Control de niveles 1 grado</h2>
+    </section>
+
+    <section class="unidades-section">
+      <h2>Unidades</h2>
+      <div id="unidades" class="unidades"></div>
+    </section>
+
+    <section class="temas-section">
+      <h2>Temas de la Unidad Seleccionada</h2>
+      <div id="temas" class="temas"></div>
+    </section>
+  </main>
+
+  <div id="modal" class="modal hidden">
+    <div class="modal-content">
+      <button id="cerrarModalBtn" class="cerrar-btn" title="Cerrar">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+      <p id="modalTexto"></p>
+      <div class="modal-botones">
+        <button id="modalSi" class="btn-modal">Sí</button>
+        <button id="modalNo" class="btn-modal">No</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="control.js"></script>
+</body>
+</html>

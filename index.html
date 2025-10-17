@@ -1,0 +1,73 @@
+<!-- 
+  Este archivo HTML implementa una interfaz de inicio de sesión (login) para un sistema o aplicación web.
+  Contiene un formulario que permite al usuario ingresar su nombre de usuario y contraseña, con íconos visuales 
+  y la opción de mostrar/ocultar la contraseña. Además, incluye elementos estéticos como avatares, un logotipo, 
+  íconos de redes sociales y una animación de carga. También incorpora un modal de error para mostrar mensajes 
+  cuando las credenciales ingresadas son incorrectas. Todo el comportamiento dinámico y las validaciones se gestionan 
+  mediante el archivo JavaScript "index.js", mientras que el diseño visual se define en "index.css".
+-->
+
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login</title>
+  <link rel="stylesheet" href="index.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+
+<body>
+  <div class="login-container">
+    <img src="imagenes/avatar1.png" alt="Avatar feliz" class="avatar avatar-left">
+
+    <div class="login-card">
+      <img src="imagenes/logo.png" alt="Logo" class="logo">
+
+      <p class="texto-instruccion">
+        Ingresa tu usuario y contraseña para empezar.
+      </p>
+
+      <form id="login-form">
+        <div class="input-box">
+          <span class="material-icons icon">person</span>
+          <input type="text" id="usuario" placeholder="Usuario" required>
+        </div>
+
+        <div class="input-box">
+          <span class="material-icons icon">lock</span>
+          <input type="password" id="contraseña" placeholder="Contraseña" required>
+          <span class="material-icons icon toggle-password" id="togglePassword">visibility_off</span>
+        </div>
+
+        <button type="submit" id="login-btn">Ingresar</button>
+      </form>
+    </div>
+
+    <div class="social-section">
+      <a href="https://www.facebook.com" target="_blank"><img src="imagenes/face.png" alt="Facebook" class="social-icon"></a>
+      <a href="https://www.google.com" target="_blank"><img src="imagenes/google.png" alt="Google" class="social-icon"></a>
+      <a href="https://www.mined.gob.ni/" target="_blank"><img src="imagenes/mined.png" alt="MINED" class="social-icon mined-icon"></a>
+    </div>
+
+    <img src="imagenes/avatar2.png" alt="Avatar estrella" class="avatar avatar-right">
+  </div>
+
+  <div id="errorModal" class="modal">
+    <div class="modal-content">
+      <p>❌ Usuario o contraseña incorrectos</p>
+      <button id="closeModal">Cerrar</button>
+    </div>
+  </div>
+
+  <div id="loader" class="loader-container">
+    <div class="loader">
+      <img src="imagenes/logo.png" alt="Cargando...">
+    </div>
+  </div>
+
+  <script src="index.js"></script>
+</body>
+</html>

@@ -1,0 +1,92 @@
+ <!-- Este documento HTML define la interfaz principal del módulo para padres, 
+  incluyendo la barra lateral de navegación, la barra superior con información 
+  del usuario, el perfil del estudiante, la sección de progreso general y tarjetas
+   resumen. Se usan fuentes de Google Fonts y los iconos de Font Awesome, y se vincula
+    un CSS externo para estilos y un JS para interactividad. -->
+  
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inicio - Módulo Padres</title>
+
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="inicio.css">
+</head>
+<body>
+  <aside class="sidebar">
+    <nav class="menu">
+      <a href="inicio.html" class="menu-item active">
+        <div class="menu-icon-container"><i class="fa-solid fa-house"></i></div>
+        <div class="menu-text">Inicio</div>
+      </a>
+      <a href="progreso.html" class="menu-item">
+        <div class="menu-icon-container"><i class="fa-solid fa-chart-line"></i></div>
+        <div class="menu-text">Progreso</div>
+      </a>
+      <a href="agenda.html" class="menu-item">
+        <div class="menu-icon-container"><i class="fa-solid fa-calendar-days"></i></div>
+        <div class="menu-text">Agenda</div>
+      </a>
+      <a href="reportes.html" class="menu-item">
+        <div class="menu-icon-container"><i class="fa-solid fa-file-lines"></i></div>
+        <div class="menu-text">Reportes</div>
+      </a>
+    </nav>
+  </aside>
+
+  <main class="main-content">
+    <section class="topbar">
+      <h1>Bienvenido Jose Martinez</h1>
+      <div class="user-info">
+        <img src="https://cdn-icons-png.flaticon.com/512/2922/2922506.png" alt="Padre">
+        <span>José Martínez</span>
+      </div>
+    </section>
+
+    <section class="perfil-estudiante">
+      <img src="https://cdn-icons-png.flaticon.com/512/4333/4333609.png" alt="Estudiante" class="foto-estudiante">
+      <div>
+        <h2 id="nombreEstudiante">Laura Martínez</h2>
+        <p>Grado: 1° Básico · Sección A</p>
+      </div>
+    </section>
+
+    <section class="progreso">
+      <h3>Progreso general</h3>
+      <div class="barra">
+        <div class="barra-progreso" id="barraProgreso"></div>
+      </div>
+      <p id="porcentajeProgreso">0%</p>
+    </section>
+
+    <section class="resumen">
+      <div class="card" id="cardProgreso">
+        <i class="fa-solid fa-chart-column"></i>
+        <h4>Progreso Académico</h4>
+        <p id="datoProgreso">–</p>
+      </div>
+      <div class="card">
+        <i class="fa-solid fa-trophy"></i>
+        <h4>Objetivos Alcanzados</h4>
+        <p id="datoObjetivos">–</p>
+      </div>
+      <div class="card">
+        <i class="fa-solid fa-calendar-check"></i>
+        <h4>Asistencia</h4>
+        <p id="datoAsistencia">–</p>
+      </div>
+      <div class="card">
+        <i class="fa-solid fa-lightbulb"></i>
+        <h4>Recomendación</h4>
+        <p id="datoRecomendacion">–</p>
+      </div>
+    </section>
+  </main>
+
+  <script src="inicio.js"></script>
+</body>
+</html>

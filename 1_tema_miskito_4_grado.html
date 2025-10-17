@@ -1,0 +1,103 @@
+  <!--
+      Este código HTML estructura un juego educativo de figuras geométricas para niños miskitos.
+      Contiene varios elementos principales:
+      1. Cabecera: Muestra un avatar pequeño y un label para voz/subtítulos que se actualizará dinámicamente.
+      2. Modal de introducción: Pantalla inicial con avatar grande, texto de bienvenida y un botón para comenzar el juego.
+      3. Área principal de juego:
+         - figureZone: Muestra la figura que el niño debe aprender y reproducir.
+         - drawZone: Zona de dibujo con canvas donde el niño dibuja la figura siguiendo las instrucciones. Incluye botones de limpiar y terminar.
+      4. Modal de resultado final: Muestra la puntuación o estrellas obtenidas después de completar la figura y un mensaje de retroalimentación.
+      5. Modal de héroe desbloqueado: Se activa cuando se completa un logro, mostrando el héroe, su descripción y opciones para abrir el álbum de héroes o cerrar.
+      6. Modal de álbum: Muestra todos los héroes desbloqueados en una cuadrícula y un botón para cerrar y volver al mapa principal.
+      7. Elementos de audio: Archivos de sonido pre-cargados para indicar aciertos o errores durante el juego.
+      
+      Todo el comportamiento interactivo (movimiento de figuras, validación de dibujo, reproducción de voz y sonidos,
+      control de modales, desbloqueo de héroes y actualización del álbum) se maneja a través del archivo JavaScript "1_tema_miskito_4_grado.js".
+    -->
+      
+    
+    <!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Figuras - Juego Miskito</title>
+  <link rel="stylesheet" href="1_tema_miskito_4_grado.css" />
+</head>
+<body>
+  <div id="app">
+
+    <div id="header">
+      <img id="avatarSmall" src="imagenes/mx.jpg" alt="Max" />
+      <div id="voiceLabel" aria-live="polite" class="subtitle"></div>
+    </div>
+
+    <div id="introModal" class="modal show">
+      <div class="modal-inner">
+        <img src="imagenes/mx.jpg" alt="Max" class="avatar-large" />
+        <div class="intro-text" id="introText"></div>
+        <button id="startBtn" class="btn primary">Comenzar</button>
+      </div>
+    </div>
+
+    <main id="gameArea">
+      <div id="figureZone">
+        <img id="figureImg" src="" alt="Figura" />
+        <div id="figureName" class="figure-name"></div>
+      </div>
+
+      <div id="drawZone" class="hidden">
+        <div class="draw-header">
+          <div id="instruction" class="subtitle"></div>
+          <button id="limpiarBtn" class="btn">Limpiar</button>
+        </div>
+        <div id="canvasWrap">
+          <canvas id="drawCanvas"></canvas>
+          <canvas id="overlayCanvas" class="overlay"></canvas>
+        </div>
+        <div class="draw-footer">
+          <button id="doneBtn" class="btn primary">Terminé</button>
+        </div>
+      </div>
+    </main>
+
+    <div id="resultModal" class="modal hidden">
+      <div class="modal-inner">
+        <h2 id="resultTitle"></h2>
+        <div id="stars" class="stars"></div>
+        <div id="resultText" class="subtitle"></div>
+        <div class="modal-actions">
+          <button id="closeResultBtn" class="btn primary">Cerrar</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="heroModal" class="modal hidden">
+      <div class="modal-inner hero">
+        <h2 id="heroName"></h2>
+        <img id="heroImg" src="" alt="Héroe" />
+        <p id="heroDesc"></p>
+        <div class="modal-actions">
+          <button id="openAlbumBtn" class="btn">Ver álbum</button>
+          <button id="closeHeroBtn" class="btn primary">Cerrar</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="albumModal" class="modal hidden">
+      <div class="modal-inner album">
+        <h2>Álbum de Héroes</h2>
+        <div id="albumGrid" class="album-grid"></div>
+        <div class="modal-actions">
+          <button id="closeAlbumBtn" class="btn primary">Cerrar y volver al mapa</button>
+        </div>
+      </div>
+    </div>
+
+    <audio id="sndCorrect" src="sonidos/correcto.mp3" preload="auto"></audio>
+    <audio id="sndError" src="sonidos/error.mp3" preload="auto"></audio>
+  </div>
+
+  <script src="1_tema_miskito_4_grado.js"></script>
+</body>
+</html>

@@ -1,0 +1,302 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  display: flex;
+  background: linear-gradient(to bottom, #eaf4ff, #ffffff);
+  min-height: 100vh;
+  color: #333;
+}
+
+.sidebar {
+  width: 240px;
+  background: linear-gradient(to right, #4da3ff 60px, #1b2b48 60px);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  padding-top: 20px;
+}
+
+.menu-item {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: white;
+  margin: 4px 0;
+  border-radius: 0 12px 12px 0;
+  transition: 0.3s;
+}
+
+.menu-icon-container {
+  width: 60px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.menu-item i {
+  font-size: 18px;
+}
+
+.menu-text {
+  padding: 10px 18px;
+  flex: 1;
+}
+
+.menu-item:hover .menu-text {
+  background: #243b64;
+}
+
+.menu-item.active .menu-text {
+  background: #ffffff;
+  color: #1b2b48;
+  box-shadow: 2px 2px 8px rgba(0,0,0,0.2);
+}
+
+.main-content {
+  flex: 1;
+  padding: 25px 40px;
+  display: flex;
+  flex-direction: column;
+}
+
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #fff;
+  border-radius: 12px;
+  padding: 14px 20px;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.05);
+  margin-bottom: 25px;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.user-info img {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+}
+
+.filtros {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 25px;
+}
+
+.filtros select,
+.filtros input,
+.filtros button {
+  padding: 8px 14px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 0.95rem;
+}
+
+.filtros button {
+  background: #1b2b48;
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.filtros button:hover {
+  background: #4da3ff;
+}
+
+.agenda-lista {
+  display: grid;
+  gap: 20px;
+}
+
+.item-agenda {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #fff;
+  padding: 16px 20px;
+  border-radius: 12px;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.05);
+  border-left: 6px solid #1b2b48;
+  transition: transform 0.2s ease;
+}
+
+.item-agenda:hover {
+  transform: translateY(-3px);
+}
+
+.item-info {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.item-info i {
+  font-size: 24px;
+  color: #1b2b48;
+}
+
+.item-text h4 {
+  margin-bottom: 4px;
+  color: #1b2b48;
+}
+
+.item-text p {
+  font-size: 0.9rem;
+  color: #555;
+}
+
+.estado {
+  font-weight: 600;
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-size: 0.85rem;
+}
+
+.estado.pendiente {
+  background: #ffebeb;
+  color: #c0392b;
+}
+
+.estado.completado {
+  background: #eafaf1;
+  color: #27ae60;
+}
+
+
+
+
+
+
+
+
+@media (max-width: 768px) {
+  body {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    position: fixed;
+    bottom: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: auto;
+    height: 60px;
+    background: #1b2b48;
+    border-radius: 30px;
+    padding: 0 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 999;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  }
+
+  .menu {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+  }
+
+  .menu-item {
+    flex-direction: column;
+    justify-content: center;
+    border-radius: 12px;
+    margin: 0;
+  }
+
+  .menu-icon-container {
+    width: 48px;
+    height: 48px;
+  }
+
+  .menu-text {
+    display: none;
+  }
+
+  .main-content {
+    padding: 15px;
+    margin-bottom: 80px;
+  }
+
+  .topbar {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .filtros {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+  }
+
+  .agenda-lista {
+    gap: 15px;
+  }
+
+  .item-agenda {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .estado {
+    align-self: flex-end;
+  }
+}
+
+@media (max-width: 480px) {
+  .sidebar {
+    height: 55px;
+    padding: 0 10px;
+  }
+
+  .menu-icon-container i {
+    font-size: 16px;
+  }
+
+  .main-content {
+    padding: 10px;
+  }
+
+  .topbar {
+    font-size: 0.9rem;
+  }
+
+  .user-info img {
+    width: 32px;
+    height: 32px;
+  }
+
+  .item-agenda {
+    padding: 12px 15px;
+  }
+
+  .item-text h4 {
+    font-size: 1rem;
+  }
+
+  .item-text p {
+    font-size: 0.8rem;
+  }
+
+  .estado {
+    font-size: 0.75rem;
+    padding: 4px 8px;
+  }
+}

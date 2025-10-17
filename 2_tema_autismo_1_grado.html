@@ -1,0 +1,100 @@
+<!-- 
+Esta página implementa un juego educativo llamado "Rompecabezas de Números 1-10" destinado a niños. 
+El objetivo del juego es arrastrar los números hacia las imágenes que representan la cantidad correcta de frutas o animales.
+
+Estructura y funcionalidades:
+
+1. Título y encabezados:
+   - <h1> con el nombre del juego.
+   - <div id="instrucciones"> para mostrar instrucciones al jugador.
+   - <h3> para indicar la sección de imágenes ya colocadas.
+
+2. Contenedores del juego:
+   - #numeros: contiene los números que el jugador puede arrastrar.
+   - #imagenesPendientes: contiene las imágenes de frutas/animales que deben coincidir con los números.
+   - #imagenesCorrectas: muestra las imágenes que ya fueron correctamente emparejadas.
+
+3. Modales (ventanas emergentes):
+   - #modalEstrellas: muestra la cantidad de estrellas obtenidas al finalizar el juego.
+   - #modalPersonaje: muestra un héroe desbloqueado al finalizar el juego.
+   - #modalColeccion: permite al jugador ver su colección de personajes desbloqueados.
+   - #modalMotivacional: felicita al jugador y ofrece opciones de volver al mapa o repetir el juego.
+
+4. Elementos de audio:
+   - #correcto: sonido que se reproduce al colocar correctamente un número.
+   - #error: sonido que se reproduce al cometer un error.
+
+5. Inclusión de CSS y JS:
+   - "2_tema.css" define la apariencia del juego y los modales.
+   - "2_tema.js" contiene toda la lógica del juego, incluyendo:
+     - Generación de números e imágenes.
+     - Funcionalidad drag & drop.
+     - Manejo de frases motivacionales.
+     - Desbloqueo de héroes y gestión de colección.
+     - Text-to-speech para guiar al jugador.
+     - Control de modales y flujo del juego.
+-->
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Rompecabezas de Números</title>
+    <link rel="stylesheet" href="2_tema_autismo_1_grado.css">
+</head>
+<body>
+    <h1>Rompecabezas de Números 1-10</h1>
+    <div id="instrucciones">Arrastra el número hacia la imagen con la cantidad correcta.</div>
+
+    <div id="numeros" class="contenedor-numeros"></div>
+    <div id="imagenesPendientes" class="contenedor-imagenes"></div>
+
+    <h3>¡Ya colocados!</h3>
+    <div id="imagenesCorrectas" class="contenedor-imagenes"></div>
+
+    <div id="modalEstrellas" class="modal">
+        <div class="modal-content">
+            <span id="cerrarModalEstrellas" class="cerrar">&times;</span>
+            <h2>¡Juego Terminado!</h2>
+            <p>Obtuviste:</p>
+            <div id="estrellasModal"></div>
+            <button id="aceptarEstrellas">Aceptar</button>
+        </div>
+    </div>
+
+    <div id="modalPersonaje" class="modal">
+        <div class="modal-content">
+            <h2>¡Nuevo Héroe Desbloqueado!</h2>
+            <img id="personajeDesbloqueado" src="" alt="Héroe" style="width:120px;">
+            <h3 id="nombrePersonaje"></h3>
+            <p id="descripcionPersonaje"></p>
+            <div>
+                <button id="verColeccion">Ver colección</button>
+                <button id="aceptarPersonaje">Aceptar</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="modalColeccion" class="modal">
+        <div class="modal-content">
+            <h2>Mi Colección</h2>
+            <div id="coleccionPersonajes"></div>
+            <button id="cerrarColeccion">Cerrar</button>
+        </div>
+    </div>
+
+    <div id="modalMotivacional" class="modal">
+        <div class="modal-content">
+            <h2>¡Felicitaciones!</h2>
+            <p>¡Has completado el juego!</p>
+            <button id="volverMapa">Volver al mapa</button>
+            <button id="repetirJuego">Jugar de nuevo</button>
+        </div>
+    </div>
+
+    <audio id="correcto" src="sonidos/correcto.mp3"></audio>
+    <audio id="error" src="sonidos/error.mp3"></audio>
+
+    <script src="2_tema_autismo_1_grado.js"></script>
+</body>
+</html>
