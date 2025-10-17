@@ -1,0 +1,91 @@
+<!--
+Este código HTML estructura una página de reportes de matemáticas para padres. 
+Incluye un sidebar de navegación con enlaces a Inicio, Progreso, Agenda y Reportes, 
+destacando la sección activa. En el contenido principal se muestra un encabezado con 
+el nombre del usuario y su foto, seguido de una sección de reportes que contiene tres
+ tarjetas: un gráfico de rendimiento por unidad utilizando Chart.js, una tabla con calificaciones
+  recientes, y un área de recomendaciones con consejos personalizados. Además, se enlazan los estilos
+   CSS externos y la librería de iconos Font Awesome, así como un archivo JS para la generación
+    del gráfico.
+-->
+
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Reportes - Matemáticas</title>
+  <link rel="stylesheet" href="reportes.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+</head>
+
+<body>
+  <aside class="sidebar">
+    <div class="logo">
+      <i class="fa-solid fa-calculator"></i>
+      <h2>Padres</h2>
+    </div>
+
+    <nav class="menu">
+      <a href="inicio2.html" class="menu-item">
+        <i class="fa-solid fa-house"></i><span>Inicio</span>
+      </a>
+      <a href="progreso.html" class="menu-item">
+        <i class="fa-solid fa-chart-line"></i><span>Progreso</span>
+      </a>
+      <a href="agenda.html" class="menu-item">
+        <i class="fa-solid fa-calendar-days"></i><span>Agenda</span>
+      </a>
+      <a href="reportes.html" class="menu-item active">
+        <i class="fa-solid fa-file-lines"></i><span>Reportes</span>
+      </a>
+    </nav>
+  </aside>
+
+  <main class="main-content">
+    <header class="topbar">
+      <h1>Reportes de Matemáticas</h1>
+      <div class="user">
+        <img src="https://cdn-icons-png.flaticon.com/512/219/219983.png" alt="Padre" />
+        <span>Juan Pérez</span>
+      </div>
+    </header>
+
+    <section class="report-section">
+      <div class="report-card">
+        <h2><i class="fa-solid fa-chart-pie"></i> Rendimiento por Unidad</h2>
+        <canvas id="chartRendimiento"></canvas>
+      </div>
+
+      <div class="report-card">
+        <h2><i class="fa-solid fa-list-check"></i> Calificaciones Recientes</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Tema</th>
+              <th>Fecha</th>
+              <th>Calificación</th>
+            </tr>
+          </thead>
+          <tbody id="tablaNotas">
+            <tr><td>Orden de números</td><td>10/10/2025</td><td>85%</td></tr>
+            <tr><td>Relaciona números con objetos</td><td>05/10/2025</td><td>90%</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="report-card recomendaciones">
+        <h2><i class="fa-solid fa-lightbulb"></i> Recomendaciones</h2>
+        <p id="mensajeIA">
+          Tu hijo muestra un buen dominio en operaciones básicas. Sería recomendable reforzar el tema de
+          multiplicación mediante juegos interactivos y ejercicios visuales.
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <script src="reportes.js"></script>
+</body>
+</html>

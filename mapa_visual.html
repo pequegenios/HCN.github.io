@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mapa Auditivo</title>
+  <link rel="stylesheet" href="mapa_visual.css">
+</head>
+<body>
+
+  <div class="nube nube1"></div>
+  <div class="nube nube2"></div>
+  <div class="sol"></div>
+
+  <header class="titulo-mapa">
+    <h1>Mapa 2 grado</h1>
+  </header>
+
+  <div class="mapa">
+    <img src="imagenes/mapa2.png" alt="Mapa Auditivo" class="fondo-mapa">
+    <img src="imagenes/numero_1.png" alt="Nivel 1" class="nivel nivel1" id="nivel1">
+    <img src="imagenes/numero_2.png" alt="Nivel 2" class="nivel nivel2" id="nivel2">
+  </div>
+
+  <div id="popup">
+    <div class="popup-content">
+      <h2>🚫 Nivel No Disponible</h2>
+      <p>Uups 😅 Tu profesor aún no ha habilitado este nivel.<br> ¡Pronto podrás descubrirlo! 🌟</p>
+      <button id="closePopup">Entiendo</button>
+    </div>
+  </div>
+
+  <script src="mapa_visual.js"></script>
+</body>
+</html>

@@ -1,0 +1,93 @@
+<!-- Este código HTML crea una interfaz de usuario para que los padres puedan ver el 
+ progreso en matemáticas de sus hijos. Incluye un menú lateral de navegación con enlaces 
+ a diferentes secciones (Inicio, Progreso, Agenda, Reportes), un encabezado superior con 
+ información del usuario, un perfil del estudiante mostrando foto, nombre y grado, botones
+  de filtro para seleccionar el trimestre, un gráfico de rendimiento usando Chart.js, y 
+  tarjetas resumen que muestran el tema destacado, tema a mejorar y recomendaciones. Además,
+   carga estilos desde 'progreso.css' y lógica interactiva desde 'progreso.js', utilizando
+    fuentes Poppins y los iconos de Font Awesome. -->
+
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Progreso en Matemáticas - Módulo Padres</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link rel="stylesheet" href="progreso.css" />
+</head>
+<body>
+
+<aside class="sidebar">
+  <nav class="menu">
+    <a href="inicio.html" class="menu-item">
+      <div class="menu-icon-container"><i class="fa-solid fa-house"></i></div>
+      <div class="menu-text">Inicio</div>
+    </a>
+    <a href="progreso.html" class="menu-item active">
+      <div class="menu-icon-container"><i class="fa-solid fa-chart-line"></i></div>
+      <div class="menu-text">Progreso</div>
+    </a>
+    <a href="agenda.html" class="menu-item">
+      <div class="menu-icon-container"><i class="fa-solid fa-calendar-days"></i></div>
+      <div class="menu-text">Agenda</div>
+    </a>
+    <a href="reportes.html" class="menu-item">
+      <div class="menu-icon-container"><i class="fa-solid fa-file-lines"></i></div>
+      <div class="menu-text">Reportes</div>
+    </a>
+  </nav>
+</aside>
+
+<main class="main-content">
+  <section class="topbar">
+    <h1> Progreso en Matemáticas</h1>
+    <div class="user-info">
+      <img src="https://cdn-icons-png.flaticon.com/512/2922/2922506.png" alt="Padre">
+      <span>José Martínez</span>
+    </div>
+  </section>
+
+  <section class="perfil-estudiante">
+    <img src="https://cdn-icons-png.flaticon.com/512/4333/4333609.png" alt="Estudiante" class="foto-estudiante">
+    <div>
+      <h2>Laura Martínez</h2>
+      <p>Grado: 1° Básico · Matemáticas</p>
+    </div>
+  </section>
+
+  <section class="filtros">
+    <button class="filtro activo">Trimestre 1</button>
+    <button class="filtro">Trimestre 2</button>
+    <button class="filtro">Trimestre 3</button>
+  </section>
+
+  <section class="grafico">
+    <canvas id="graficoMatematicas"></canvas>
+  </section>
+
+  <section class="resumen">
+    <div class="card">
+      <i class="fa-solid fa-book-open"></i>
+      <h4>Tema Destacado</h4>
+      <p id="temaAlto">–</p>
+    </div>
+    <div class="card">
+      <i class="fa-solid fa-triangle-exclamation"></i>
+      <h4>Tema a Mejorar</h4>
+      <p id="temaBajo">–</p>
+    </div>
+    <div class="card">
+      <i class="fa-solid fa-lightbulb"></i>
+      <h4>Recomendación</h4>
+      <p id="recomendacion">–</p>
+    </div>
+  </section>
+</main>
+
+<script src="progreso.js"></script>
+</body>
+</html>

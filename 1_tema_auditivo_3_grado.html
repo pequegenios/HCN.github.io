@@ -1,0 +1,96 @@
+<!--
+Este documento HTML constituye la estructura de la aplicación educativa "Reloj Aventurero", diseñada para enseñar a los niños a leer la hora. 
+Contiene:
+
+1. Pantalla inicial:
+   - Un overlay con la imagen del personaje MX y un texto dinámico para interactuar con el usuario al inicio del juego.
+
+2. Contenedor principal:
+   - Título y descripción introductoria del juego.
+   - Sección para mostrar la hora objetivo que el niño debe marcar y la hora actualmente marcada en el reloj.
+   - Reloj analógico representado con números del 1 al 12 y manecillas de hora y minuto, además de un centro visual.
+   - Botón de verificación que permitirá al usuario comprobar si la hora marcada es correcta.
+   - Un área para mostrar mensajes de retroalimentación.
+
+3. Modal de colección:
+   - Overlay que se muestra cuando el usuario desbloquea un héroe.
+   - Contiene un título, un contenedor para los héroes desbloqueados y un botón para cerrar el modal.
+
+4. Modal de video:
+   - Overlay para reproducir videos explicativos o de refuerzo.
+   - Incluye un texto descriptivo, un reproductor de video HTML5 con controles y un botón para saltar el video.
+
+5. Integración de scripts:
+   - Se enlaza el archivo JavaScript `1_tema_auditivo_3_grado.js` que maneja toda la lógica del juego, incluyendo la interacción con el reloj, validación de la hora, animaciones de los modales, desbloqueo de héroes y control de videos.
+
+La estructura hace uso de clases y IDs para facilitar la estilización mediante CSS y la manipulación dinámica mediante JavaScript.
+-->
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Reloj Aventurero</title>
+<link rel="stylesheet" href="1_tema_auditivo_3_grado.css">
+</head>
+<body>
+
+<div id="pantallaCompleta" class="overlay">
+    <div class="max-container">
+        <img src="imagenes/mx.jpg" alt="MX el perro">
+        <p id="maxTexto"></p>
+    </div>
+</div>
+
+<div class="contenedor">
+    <h1>🕒 Aprende la Hora con MX 🐶</h1>
+    <p id="descripcionJuego">Bienvenido! Hoy aprenderemos sobre las horas y los minutos.</p>
+
+    <div class="cinta">
+        <p id="horaObjetivo" class="objetivo"></p>
+        <p id="horaMarcada" class="marcada"></p>
+    </div>
+
+    <div id="reloj">
+        <div class="numero n12">12</div>
+        <div class="numero n1">1</div>
+        <div class="numero n2">2</div>
+        <div class="numero n3">3</div>
+        <div class="numero n4">4</div>
+        <div class="numero n5">5</div>
+        <div class="numero n6">6</div>
+        <div class="numero n7">7</div>
+        <div class="numero n8">8</div>
+        <div class="numero n9">9</div>
+        <div class="numero n10">10</div>
+        <div class="numero n11">11</div>
+
+        <div id="hora" class="manecilla"></div>
+        <div id="minuto" class="manecilla"></div>
+        <div id="centro"></div>
+    </div>
+
+    <button id="verificar">✅ Verificar</button>
+    <div class="cinta"><p id="mensaje"></p></div>
+</div>
+
+<div id="modalColeccion" class="overlay modal">
+    <div class="coleccion-container">
+        <h2>Héroe desbloqueado</h2>
+        <div id="heroesDesbloqueados" class="heroes"></div>
+        <button id="cerrarColeccion">Cerrar</button>
+    </div>
+</div>
+
+<div id="modalVideo" class="overlay">
+    <div class="video-container">
+        <p id="descripcionVideo"></p>
+        <video id="video" controls></video>
+        <button id="saltarVideo">Saltar Video</button>
+    </div>
+</div>
+
+<script src="1_tema_auditivo_3_grado.js"></script>
+</body>
+</html>

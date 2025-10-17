@@ -1,0 +1,266 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  display: flex;
+  min-height: 100vh;
+  background: linear-gradient(to bottom, #eaf4ff, #ffffff);
+  color: #333;
+  overflow-x: hidden;
+}
+
+.sidebar {
+  width: 240px;
+  background: linear-gradient(to right, #4da3ff 60px, #1b2b48 60px);
+  color: white;
+  padding-top: 20px;
+}
+
+.menu {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.menu-item {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  margin: 4px 0;
+  border-radius: 0 12px 12px 0;
+  transition: 0.3s;
+}
+
+.menu-icon-container {
+  width: 60px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.menu-item i {
+  color: #fff;
+  font-size: 18px;
+}
+
+.menu-text {
+  flex: 1;
+  padding: 10px 18px;
+  color: #fff;
+}
+
+.menu-item.active .menu-text {
+  background: #ffffff;
+  color: #1b2b48;
+}
+
+.main-content {
+  flex: 1;
+  padding: 25px 40px;
+  display: flex;
+  flex-direction: column;
+}
+
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #fff;
+  border-radius: 12px;
+  padding: 14px 20px;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.05);
+  margin-bottom: 25px;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.user-info img {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+}
+
+.perfil-estudiante {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  background: #f5f9ff;
+  border-radius: 12px;
+  padding: 15px 25px;
+  margin-bottom: 25px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+.foto-estudiante {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+}
+
+.filtros {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 25px;
+}
+
+.filtro {
+  padding: 8px 16px;
+  background: #dcecff;
+  border: none;
+  border-radius: 20px;
+  color: #1b2b48;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.filtro.activo {
+  background: #1b2b48;
+  color: #fff;
+}
+
+.grafico {
+  background: #fff;
+  border-radius: 12px;
+  padding: 15px;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.05);
+  margin-bottom: 25px;
+  width: 65%;
+  align-self: center;
+}
+
+#graficoMatematicas {
+  height: 220px !important;
+  max-width: 100%;
+}
+
+.resumen {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 20px;
+}
+
+.card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.05);
+}
+
+
+
+
+
+
+
+
+
+
+
+@media (max-width: 768px) {
+  body {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    position: fixed;
+    bottom: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: auto;
+    height: 60px;
+    background: #1b2b48;
+    border-radius: 30px;
+    padding: 0 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 999;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  }
+
+  .menu {
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+  }
+
+  .menu-item {
+    flex-direction: column;
+    justify-content: center;
+    border-radius: 12px;
+    margin: 0;
+  }
+
+  .menu-icon-container {
+    width: 48px;
+    height: 48px;
+  }
+
+  .menu-text {
+    display: none;
+  }
+
+  .main-content {
+    padding: 15px;
+    margin-bottom: 80px;
+  }
+
+  .topbar {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .perfil-estudiante {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .filtros {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .grafico {
+    width: 100%;
+    padding: 10px;
+  }
+
+  .resumen {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .sidebar {
+    height: 55px;
+    padding: 0 10px;
+  }
+
+  .menu-icon-container i {
+    font-size: 16px;
+  }
+
+  .main-content {
+    padding: 10px;
+  }
+
+  .perfil-estudiante {
+    gap: 10px;
+  }
+
+  .grafico {
+    padding: 8px;
+  }
+}

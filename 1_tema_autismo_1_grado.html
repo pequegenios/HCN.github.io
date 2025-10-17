@@ -1,0 +1,126 @@
+<!--
+Este documento HTML define una página interactiva educativa enfocada en enseñar los números del 1 al 10, diseñada posiblemente para niños con necesidades educativas especiales, dado el nombre del archivo CSS.
+
+1. Estructura general:
+   - Se utiliza <!DOCTYPE html> y <html lang="es"> para definir el documento en español.
+   - <head> contiene la configuración de codificación UTF-8, viewport para dispositivos móviles, título y enlace al archivo CSS externo '1_tema_autismo_1_grado.css'.
+   - <body> contiene todo el contenido visible e interactivo de la página.
+
+2. Fondo y contenedor principal:
+   - <div class="background"></div> sirve como contenedor para la imagen o color de fondo de la página.
+   - <main class="wrap"> contiene el contenido principal, que incluye encabezado, juego, popups y canvas.
+
+3. Encabezado:
+   - <header> con <h1> muestra el título "Números 1 → 10".
+   - <p class="lead"> proporciona instrucciones iniciales: "Toca los números en orden y desbloquea tu héroe".
+
+4. Sección del juego:
+   - <section id="game"> es el área principal del juego.
+     - <div id="status"> indica el número que el usuario debe tocar actualmente ("Comienza con 1").
+     - <div id="board"> será dinámicamente poblado con los números del 1 al 10 por JavaScript.
+     - <div id="completed"> muestra los números acertados por el usuario.
+     - <div class="controls"> contiene botones de control:
+       - "Reiniciar" para reiniciar el juego.
+       - "Pista" para mostrar una ayuda o sugerencia.
+       - "Volver al mapa" para regresar a la pantalla principal del mapa del juego.
+     - <div id="result"> se usa para mostrar mensajes de retroalimentación durante el juego.
+
+5. Popups de héroes:
+   - <div id="popupHero"> es un popup que aparece al completar el nivel, mostrando un héroe desbloqueado:
+     - Incluye título, imagen, descripción y botón "Coleccionar" para agregar el héroe a la colección.
+   - <div id="collectionPopup"> es un popup para visualizar la colección de héroes ya desbloqueados:
+     - Incluye un contenedor <div id="collection"> donde se listarán los héroes.
+     - Botón "Cerrar" para ocultar el popup.
+
+6. Canvas de confeti:
+   - <canvas id="confetti"></canvas> se utiliza para animaciones de confeti cuando se completa el nivel exitosamente.
+
+7. Popup de finalización de nivel:
+   - <div id="endPopup"> muestra un mensaje de felicitaciones y dos botones:
+     - "Reintentar" para reiniciar el nivel.
+     - "Ir al mapa" para volver a la selección de niveles.
+
+8. Sonidos:
+   - <audio id="correctSound" src="sonidos/correcto.mp3"></audio> para reproducir el sonido de acierto.
+   - <audio id="wrongSound" src="sonidos/error.mp3"></audio> para reproducir el sonido de error.
+
+9. Script:
+   - <script src="1_tema_autismo_1_grado.js"></script> enlaza el archivo JavaScript que contiene toda la lógica del juego:
+     - Genera los números en el tablero.
+     - Controla los eventos de clic de los números y botones.
+     - Actualiza el estado y la retroalimentación del juego.
+     - Maneja la aparición de popups y animaciones de confeti.
+     - Reproduce los sonidos correctos o de error según la interacción del usuario.
+     - Administra la colección de héroes y la interfaz de finalización de nivel.
+
+En resumen, este HTML configura toda la estructura y elementos interactivos de un juego educativo de números, dejando que la funcionalidad dinámica y la lógica del juego se gestionen mediante el archivo JavaScript y el diseño visual mediante el CSS externo.
+-->
+
+
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Números 1–10 </title>
+<link rel="stylesheet" href="1_tema_autismo_1_grado.css">
+</head>
+<body>
+  <div class="background"></div>
+  <main class="wrap">
+    <header>
+      <h1>Números 1 → 10</h1>
+      <p class="lead">Toca los números en orden y desbloquea tu héroe</p>
+    </header>
+
+    <section id="game">
+      <div id="status" class="status">Comienza con 1</div>
+      <div id="board" class="board"></div>
+      <div id="completed" class="completed">✔ Números acertados</div>
+      <div class="controls">
+        <button id="reset" class="btn">Reiniciar</button>
+        <button id="hint" class="btn secondary">Pista</button>
+        <button id="back" class="btn link">Volver al mapa</button>
+      </div>
+      <div id="result" class="result"></div>
+    </section>
+
+    <div id="popupHero" class="popup hidden">
+      <div class="popup-content">
+        <h2>¡Héroe desbloqueado!</h2>
+        <img src="imagenes/sandino.jpg" alt="Héroe Sandino">
+        <p>Este es Sandino, un héroe histórico de Nicaragua. ¡Colecciónalo y descubre más héroes!</p>
+        <button id="collectBtn" class="btn">Coleccionar</button>
+      </div>
+    </div>
+
+    <div id="collectionPopup" class="popup hidden">
+      <div class="popup-content">
+        <h2>Mis Héroes</h2>
+        <div id="collection" class="collection"></div>
+        <button id="closeCollection" class="btn link">Cerrar</button>
+      </div>
+    </div>
+
+    <canvas id="confetti"></canvas>
+  </main>
+
+  
+
+<div id="endPopup" class="hidden">
+  <div class="popup-content">
+    <h2>¡Felicidades! 🎉</h2>
+    <p>Has completado este nivel.</p>
+    <button id="retryBtn">🔄 Reintentar</button>
+    <button id="mapBtn">🗺️ Ir al mapa</button>
+  </div>
+</div>
+
+
+  <audio id="correctSound" src="sonidos/correcto.mp3"></audio>
+  <audio id="wrongSound" src="sonidos/error.mp3"></audio>
+
+  <script src="1_tema_autismo_1_grado.js"></script>
+</body>
+</html>
